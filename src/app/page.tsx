@@ -29,13 +29,10 @@ export default function Home() {
     try {
       setLoading(true);
       setError(null);
-      const data: PokemonListResponse = await pokeAPI.getPokemonList(limit, offset);
+      const data: PokemonListResponse = await pokeAPI.getPokemonList({ limit, offset });
       
-      const pokemonDetails = await Promise.all(
-        data.results.map(async (pokemon) => {
-          const details = await pokeAPI.getPokemon(pokemon.name);
-          return details;
-        })
+      const pokemonDetails = await pokeAPI.getPokemonBatch(
+        data.results.map(p => p.name)
       );
 
       setAllPokemons(pokemonDetails);
