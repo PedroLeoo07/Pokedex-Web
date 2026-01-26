@@ -146,6 +146,7 @@ export default function Home() {
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
               className={styles.filterSelect}
+              aria-label="Filtrar por tipo de Pokémon"
             >
               <option value="">Todos</option>
               <option value="normal">Normal</option>
@@ -175,6 +176,7 @@ export default function Home() {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className={styles.filterSelect}
+              aria-label="Ordenar Pokémon"
             >
               <option value="id">Número</option>
               <option value="name">Nome</option>

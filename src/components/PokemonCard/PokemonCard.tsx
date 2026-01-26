@@ -58,15 +58,22 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
   const defense = pokemon.stats.find(s => s.stat.name === 'defense')?.base_stat || 0;
 
   return (
-    <Link href={`/pokemon/${pokemon.id}`} className={styles.card}>
-      <div className={styles.cardHeader} style={{ background: cardGradient }}>
+    <Link 
+      href={`/pokemon/${pokemon.id}`} 
+      className={styles.card}
+      style={{
+        ['--card-gradient' as string]: cardGradient,
+        ['--primary-color' as string]: typeColors[primaryType] || '#777',
+      } as React.CSSProperties}
+    >
+      <div className={styles.cardHeader}>
         <span className={styles.id}>#{String(pokemon.id).padStart(3, '0')}</span>
         <div className={styles.types}>
           {pokemon.types.map((type) => (
             <span
               key={type.type.name}
               className={styles.typeBadge}
-              style={{ backgroundColor: typeColors[type.type.name] || '#777' }}
+              style={{ ['--type-color' as string]: typeColors[type.type.name] || '#777' } as React.CSSProperties}
             >
               {type.type.name}
             </span>
@@ -75,9 +82,9 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
       </div>
       
       <div className={styles.imageContainer}>
-        <div className={styles.imageBg} style={{ background: cardGradient, opacity: 0.1 }}></div>
+        <div className={styles.imageBg}></div>
         <Image
-          src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}
+          src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default || '/placeholder.png'}
           alt={pokemon.name}
           width={200}
           height={200}
