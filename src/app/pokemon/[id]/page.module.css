@@ -184,6 +184,7 @@
   color: white;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  background-color: var(--type-color, #777);
   box-shadow: 
     0 8px 20px rgba(0, 0, 0, 0.25),
     inset 0 2px 0 rgba(255, 255, 255, 0.3);
@@ -335,6 +336,7 @@
 
 .statFill {
   height: 100%;
+  width: var(--stat-width, 0%);
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
   border-radius: 10px;
   transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -406,7 +408,6 @@
   .statValue {
     font-size: 18px;
   }
-}
 
   .info {
     grid-template-columns: 1fr;

@@ -54,7 +54,7 @@ export default async function PokemonDetail({ params }: PageProps) {
 
         <div className={styles.imageContainer}>
           <Image
-            src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}
+            src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default || '/placeholder.png'}
             alt={pokemon.name}
             width={400}
             height={400}
@@ -68,7 +68,8 @@ export default async function PokemonDetail({ params }: PageProps) {
             <span
               key={type.type.name}
               className={styles.type}
-              style={{ backgroundColor: typeColors[type.type.name] || '#777' }}
+              // eslint-disable-next-line @next/next/no-css-tags
+              style={{ ['--type-color' as string]: typeColors[type.type.name] || '#777' } as React.CSSProperties}
             >
               {type.type.name}
             </span>
@@ -109,7 +110,8 @@ export default async function PokemonDetail({ params }: PageProps) {
                 <div className={styles.statBar}>
                   <div
                     className={styles.statFill}
-                    style={{ width: `${(stat.base_stat / 255) * 100}%` }}
+                    // eslint-disable-next-line @next/next/no-css-tags
+                    style={{ ['--stat-width' as string]: `${(stat.base_stat / 255) * 100}%` } as React.CSSProperties}
                   />
                 </div>
               </div>

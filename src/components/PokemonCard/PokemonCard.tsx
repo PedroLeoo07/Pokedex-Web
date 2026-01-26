@@ -73,6 +73,7 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
             <span
               key={type.type.name}
               className={styles.typeBadge}
+              // eslint-disable-next-line @next/next/no-css-tags
               style={{ ['--type-color' as string]: typeColors[type.type.name] || '#777' } as React.CSSProperties}
             >
               {type.type.name}
