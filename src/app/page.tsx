@@ -19,10 +19,12 @@ export default function Home() {
 
   useEffect(() => {
     loadPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
 
   useEffect(() => {
     filterAndSortPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedType, sortBy, allPokemons]);
 
   const loadPokemons = async () => {
