@@ -1,11 +1,15 @@
+/* ============================================================================
+   POKÉMON CARD - OPTIMIZED STYLES
+   ============================================================================ */
+
 .card {
   background: white;
-  border-radius: 24px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.1);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all var(--duration-slow) cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   text-decoration: none;
   color: inherit;
@@ -14,6 +18,7 @@
   position: relative;
   transform-style: preserve-3d;
   perspective: 1000px;
+  will-change: transform, box-shadow;
 }
 
 .card::before {
@@ -23,17 +28,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--duration-slow) ease;
   pointer-events: none;
   z-index: 10;
-  border-radius: 24px;
+  border-radius: var(--radius-2xl);
 }
 
 .card:hover {
   transform: translateY(-15px) rotateX(5deg) rotateY(-5deg) scale(1.03);
-  box-shadow: 
+  box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.3),
     0 0 0 2px rgba(255, 255, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -43,6 +48,15 @@
   opacity: 1;
 }
 
+.card:focus-visible {
+  outline: 2px solid var(--color-primary-1);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   CARD HEADER
+   ============================================================================ */
+
 .cardHeader {
   padding: 18px 22px;
   display: flex;
@@ -50,15 +64,14 @@
   align-items: center;
   position: relative;
   z-index: 5;
-  background: var(--card-gradient, linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%));
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--bg-card-header);
 }
 
 .id {
   color: rgba(255, 255, 255, 0.95);
   font-size: 18px;
   font-weight: 900;
-  text-shadow: 
+  text-shadow:
     2px 2px 4px rgba(0, 0, 0, 0.3),
     0 0 10px rgba(0, 0, 0, 0.2);
   letter-spacing: 1px;
@@ -79,18 +92,23 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
   background-color: var(--type-color, #777);
-  box-shadow: 
+  box-shadow:
     0 4px 8px rgba(0, 0, 0, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
+  will-change: transform;
 }
 
 .card:hover .typeBadge {
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 6px 12px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
+
+/* ============================================================================
+   IMAGE CONTAINER
+   ============================================================================ */
 
 .imageContainer {
   width: 100%;
@@ -100,7 +118,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 25px;
+  padding: var(--spacing-xl);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -112,10 +130,11 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: var(--card-gradient, linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%));
+  background: var(--bg-card);
   filter: blur(50px);
   opacity: 0.15;
-  transition: all 0.5s ease;
+  transition: all var(--duration-slow) ease;
+  will-change: transform, opacity;
 }
 
 .card:hover .imageBg {
@@ -130,13 +149,18 @@
   position: relative;
   z-index: 3;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all var(--duration-slow) cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, filter;
 }
 
 .card:hover .image {
   transform: scale(1.15) translateZ(20px);
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
 }
+
+/* ============================================================================
+   CARD INFO
+   ============================================================================ */
 
 .info {
   width: 100%;
@@ -149,22 +173,26 @@
 
 .name {
   margin: 0 0 18px 0;
-  font-size: 24px;
+  font-size: var(--font-size-2xl);
   font-weight: 800;
   text-transform: capitalize;
-  color: #1f2937;
+  color: var(--text-primary);
   text-align: center;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
 }
 
 .card:hover .name {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--color-primary-1) 0%, var(--color-primary-2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transform: scale(1.05);
 }
+
+/* ============================================================================
+   STATS
+   ============================================================================ */
 
 .stats {
   display: flex;
@@ -172,7 +200,7 @@
   gap: 12px;
   margin-top: 18px;
   padding-top: 18px;
-  border-top: 3px solid #f3f4f6;
+  border-top: 3px solid var(--color-gray-100);
 }
 
 .stat {
@@ -181,10 +209,11 @@
   align-items: center;
   gap: 6px;
   flex: 1;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
   padding: 12px 8px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-normal) ease;
+  will-change: transform;
 }
 
 .card:hover .stat {
@@ -193,41 +222,127 @@
 }
 
 .statLabel {
-  font-size: 10px;
+  font-size: var(--font-size-xs);
   font-weight: 800;
-  color: #6b7280;
+  color: var(--color-gray-500);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .statValue {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   font-weight: 900;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--color-primary-1) 0%, var(--color-primary-2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: var(--bg-card);
+  }
+
+  .info {
+    background: var(--bg-card);
+  }
+
+  .name {
+    color: var(--text-primary);
+  }
+
+  .id {
+    color: rgba(224, 224, 224, 0.95);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
 @media (max-width: 768px) {
   .name {
-    font-size: 20px;
+    font-size: var(--font-size-xl);
   }
-  
+
   .imageContainer {
     height: 180px;
-    padding: 15px;
+    padding: var(--spacing-lg);
   }
-  
+
   .stats {
     gap: 8px;
   }
-  
+
   .stat {
     padding: 10px 6px;
   }
-  
+
   .statValue {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    border-radius: var(--radius-lg);
+  }
+
+  .cardHeader {
+    padding: 14px 16px;
+  }
+
+  .id {
+    font-size: 16px;
+  }
+
+  .imageContainer {
+    height: 160px;
+    padding: var(--spacing-lg);
+  }
+
+  .imageBg {
+    width: 150px;
+    height: 150px;
+  }
+
+  .image {
+    max-height: 140px;
+  }
+
+  .info {
+    padding: 16px;
+  }
+
+  .name {
     font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .stats {
+    margin-top: 12px;
+    padding-top: 12px;
+    gap: 6px;
+  }
+
+  .stat {
+    padding: 8px 4px;
+  }
+
+  .statLabel {
+    font-size: 9px;
+  }
+
+  .statValue {
+    font-size: 16px;
+  }
+
+  .typeBadge {
+    padding: 4px 10px;
+    font-size: 9px;
   }
 }

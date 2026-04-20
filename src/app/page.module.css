@@ -1,8 +1,15 @@
+/* ============================================================================
+   POKÉDEX HOME PAGE - STYLES
+   ============================================================================ */
+
+/* ============================================================================
+   CONTAINER & BACKGROUND
+   ============================================================================ */
+
 .container {
   min-height: 100vh;
-  padding: 20px;
-  background: 
-    linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  padding: var(--spacing-lg);
+  background: var(--bg-container);
   position: relative;
   overflow: hidden;
   animation: gradientShift 15s ease infinite;
@@ -10,8 +17,12 @@
 }
 
 @keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .backgroundPattern {
@@ -20,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
     radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
     radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
@@ -28,16 +39,25 @@
   pointer-events: none;
   z-index: 0;
   animation: patternMove 30s linear infinite;
+  will-change: transform;
 }
 
 @keyframes patternMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
 }
+
+/* ============================================================================
+   HEADER & LOGO
+   ============================================================================ */
 
 .header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: var(--spacing-4xl);
   color: white;
   position: relative;
   z-index: 1;
@@ -59,8 +79,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  margin-bottom: 20px;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .pokeball {
@@ -68,14 +88,15 @@
   height: 60px;
   border-radius: 50%;
   background: linear-gradient(180deg, #ef4444 50%, #ffffff 50%);
-  border: 6px solid #1f2937;
+  border: 6px solid var(--color-gray-800);
   position: relative;
-  box-shadow: 
+  box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.4),
     inset 0 2px 4px rgba(255, 255, 255, 0.3);
   animation: float 3s ease-in-out infinite;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-normal) ease;
+  will-change: transform;
 }
 
 .pokeball:hover {
@@ -91,9 +112,9 @@
   width: 18px;
   height: 18px;
   background: white;
-  border: 5px solid #1f2937;
+  border: 5px solid var(--color-gray-800);
   border-radius: 50%;
-  box-shadow: inset 0 0 0 2px #9ca3af;
+  box-shadow: inset 0 0 0 2px var(--color-gray-400);
 }
 
 .pokeball::after {
@@ -103,7 +124,7 @@
   left: 0;
   width: 100%;
   height: 5px;
-  background: #1f2937;
+  background: var(--color-gray-800);
   transform: translateY(-50%);
 }
 
@@ -125,22 +146,26 @@
 
 .subtitle {
   font-size: 20px;
-  margin: 15px 0 0 0;
+  margin: var(--spacing-lg) 0 0 0;
   opacity: 0.95;
   font-weight: 400;
   letter-spacing: 2px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* ============================================================================
+   CONTROLS - SEARCH & FILTERS
+   ============================================================================ */
+
 .controls {
   max-width: 1200px;
-  margin: 0 auto 40px;
+  margin: 0 auto var(--spacing-3xl);
   position: relative;
   z-index: 1;
 }
 
 .searchForm {
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .searchWrapper {
@@ -158,29 +183,29 @@
   transform: translateY(-50%);
   width: 22px;
   height: 22px;
-  color: #667eea;
+  color: var(--color-primary-1);
   stroke-width: 2.5;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   z-index: 2;
 }
 
 .searchInput {
   width: 100%;
-  padding: 20px 60px;
-  font-size: 17px;
-  font-weight: 500;
+  padding: var(--spacing-lg) 60px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 60px;
+  border-radius: var(--radius-full);
   outline: none;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.95);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: #1f2937;
+  color: var(--text-primary);
 }
 
 .searchInput::placeholder {
-  color: #9ca3af;
+  color: var(--color-gray-400);
 }
 
 .searchInput:focus {
@@ -190,15 +215,15 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-.searchInput:focus + .searchIcon,
+.searchInput:focus ~ .searchIcon,
 .searchWrapper:hover .searchIcon {
-  color: #764ba2;
+  color: var(--color-primary-2);
   transform: translateY(-50%) scale(1.1);
 }
 
 .clearIcon {
   position: absolute;
-  right: 20px;
+  right: var(--spacing-lg);
   top: 50%;
   transform: translateY(-50%);
   background: #ef4444;
@@ -212,7 +237,7 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
 }
 
 .clearIcon:hover {
@@ -222,7 +247,7 @@
 
 .filters {
   display: flex;
-  gap: 15px;
+  gap: var(--spacing-md);
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -230,14 +255,14 @@
 .filterGroup {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-md);
   background: rgba(255, 255, 255, 0.18);
-  padding: 14px 24px;
-  border-radius: 60px;
+  padding: 14px var(--spacing-lg);
+  border-radius: var(--radius-full);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border: 2px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -250,22 +275,22 @@
 .filterLabel {
   color: white;
   font-weight: 700;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .filterSelect {
-  padding: 10px 18px;
+  padding: var(--spacing-md) var(--spacing-md);
   border: 2px solid transparent;
   border-radius: 25px;
   background: white;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   min-width: 140px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -274,9 +299,13 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* ============================================================================
+   RESULTS & GRID
+   ============================================================================ */
+
 .resultsInfo {
   max-width: 1400px;
-  margin: 0 auto 20px;
+  margin: 0 auto var(--spacing-lg);
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -285,13 +314,24 @@
 
 .resultsCount {
   color: white;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   background: rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-2xl);
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: var(--spacing-lg) 0;
 }
 
 .noResults {
@@ -307,28 +347,32 @@
 
 .noResultsIcon {
   font-size: 80px;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
   opacity: 0.5;
 }
 
 .noResults p {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
 }
 
 .error {
   max-width: 600px;
-  margin: 0 auto 20px;
-  padding: 15px;
+  margin: 0 auto var(--spacing-lg);
+  padding: var(--spacing-md);
   background: #ef4444;
   color: white;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   text-align: center;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
   position: relative;
   z-index: 1;
 }
+
+/* ============================================================================
+   LOADING STATE
+   ============================================================================ */
 
 .loading {
   display: flex;
@@ -345,11 +389,12 @@
   height: 80px;
   border-radius: 50%;
   background: linear-gradient(180deg, #ef4444 50%, white 50%);
-  border: 6px solid #1f2937;
+  border: 6px solid var(--color-gray-800);
   position: relative;
   animation: bounce 0.8s ease-in-out infinite, spin 2s linear infinite;
-  margin-bottom: 30px;
+  margin-bottom: var(--spacing-2xl);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  will-change: transform;
 }
 
 .loadingPokeball::before {
@@ -361,9 +406,9 @@
   width: 24px;
   height: 24px;
   background: white;
-  border: 6px solid #1f2937;
+  border: 6px solid var(--color-gray-800);
   border-radius: 50%;
-  box-shadow: inset 0 0 0 3px #9ca3af;
+  box-shadow: inset 0 0 0 3px var(--color-gray-400);
 }
 
 .loadingPokeball::after {
@@ -373,71 +418,69 @@
   left: 0;
   width: 100%;
   height: 6px;
-  background: #1f2937;
+  background: var(--color-gray-800);
   transform: translateY(-50%);
 }
 
 .loadingText {
   color: white;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg) translateY(0); }
-  50% { transform: rotate(180deg) translateY(-20px); }
-  100% { transform: rotate(360deg) translateY(0); }
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-20px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  padding: 20px 0;
-}
+/* ============================================================================
+   PAGINATION
+   ============================================================================ */
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
-  margin-top: 50px;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-4xl);
   position: relative;
   z-index: 1;
 }
 
 .pageButton {
   padding: 14px 30px;
-  font-size: 16px;
+  font-size: var(--font-size-base);
   font-weight: 700;
   background: white;
   color: #1e3a8a;
   border: none;
-  border-radius: 50px;
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .pageButton:hover:not(:disabled) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--color-primary-1) 0%, var(--color-primary-2) 100%);
   color: white;
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -455,26 +498,36 @@
 
 .pageInfo {
   color: white;
-  font-size: 18px;
+  font-size: var(--font-size-xl);
   font-weight: 700;
   background: rgba(255, 255, 255, 0.2);
-  padding: 12px 24px;
-  border-radius: 50px;
+  padding: 12px var(--spacing-lg);
+  border-radius: var(--radius-full);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+/* Tablet (max-width: 1200px) */
 @media (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
+    gap: var(--spacing-xl);
   }
 }
 
+/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: var(--spacing-md);
+  }
+
+  .header {
+    margin-bottom: var(--spacing-2xl);
   }
 
   .title {
@@ -485,9 +538,14 @@
     font-size: 16px;
   }
 
+  .pokeball {
+    width: 40px;
+    height: 40px;
+  }
+
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
+    gap: var(--spacing-lg);
   }
 
   .searchInput {
@@ -497,7 +555,7 @@
 
   .filters {
     flex-direction: column;
-    gap: 12px;
+    gap: var(--spacing-md);
   }
 
   .filterGroup {
@@ -511,66 +569,95 @@
   }
 }
 
-.pageButton:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.pageInfo {
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px 24px;
-  border-radius: 50px;  -webkit-backdrop-filter: blur(10px);  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 40px;
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-md);
   }
-  
+
+  .title {
+    font-size: 32px;
+  }
+
   .subtitle {
     font-size: 14px;
   }
-  
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
+
+  .logo {
+    gap: var(--spacing-lg);
   }
-  
+
+  .pokeball {
+    width: 35px;
+    height: 35px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+  }
+
   .searchWrapper {
     max-width: 100%;
   }
-  
-  .filters {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .filterGroup {
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .filterSelect {
-    flex: 1;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .pageButton {
-    padding: 12px 20px;
+
+  .searchInput {
+    padding: 14px 45px;
     font-size: 14px;
   }
-  
-  .pokeball {
-    width: 40px;
-    height: 40px;
+
+  .searchIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .clearIcon {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .filterGroup {
+    width: 100%;
+    padding: 12px var(--spacing-md);
+  }
+
+  .filterLabel {
+    font-size: 11px;
+  }
+
+  .filterSelect {
+    font-size: 13px;
+    min-width: 120px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .pageButton {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+
+  .pageInfo {
+    width: 100%;
+    padding: 10px var(--spacing-md);
+    font-size: 14px;
+  }
+
+  .noResultsIcon {
+    font-size: 60px;
+  }
+
+  .noResults p {
+    font-size: 18px;
   }
 }

@@ -1,0 +1,235 @@
+/* ============================================================================
+   POKÉDEX - DESIGN SYSTEM VARIABLES
+   ============================================================================
+
+   Variáveis CSS centralizadas para cor, espaçamento, tipografia e animações.
+   Suporta light mode e dark mode automaticamente.
+*/
+
+:root {
+  /* ========================================================================
+     CORES PRIMÁRIAS - TEMA PRINCIPAL
+     ======================================================================== */
+  --color-primary-1: #667eea; /* Azul Indigo */
+  --color-primary-2: #764ba2; /* Roxo */
+  --color-primary-3: #f093fb; /* Rosa Magenta */
+
+  --color-gradient-main: linear-gradient(135deg, var(--color-primary-1) 0%, var(--color-primary-2) 50%, var(--color-primary-3) 100%);
+  --color-gradient-light: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 50%, rgba(240, 147, 251, 0.1) 100%);
+
+  /* ========================================================================
+     CORES NEUTRAS
+     ======================================================================== */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* ========================================================================
+     CORES DE TIPO - POKÉMON (18 tipos)
+     ======================================================================== */
+  --color-type-normal: #A8A878;
+  --color-type-fire: #F08030;
+  --color-type-water: #6890F0;
+  --color-type-electric: #F8D030;
+  --color-type-grass: #78C850;
+  --color-type-ice: #98D8D8;
+  --color-type-fighting: #C03028;
+  --color-type-poison: #A040A0;
+  --color-type-ground: #E0C068;
+  --color-type-flying: #A890F0;
+  --color-type-psychic: #F85888;
+  --color-type-bug: #A8B820;
+  --color-type-rock: #B8A038;
+  --color-type-ghost: #705898;
+  --color-type-dragon: #7038F8;
+  --color-type-dark: #705848;
+  --color-type-steel: #B8B8D0;
+  --color-type-fairy: #EE99AC;
+
+  /* Gradientes para cada tipo */
+  --color-type-normal-gradient: linear-gradient(135deg, #A8A878, #C5C58D);
+  --color-type-fire-gradient: linear-gradient(135deg, #F08030, #F5AC78);
+  --color-type-water-gradient: linear-gradient(135deg, #6890F0, #A8C5E8);
+  --color-type-electric-gradient: linear-gradient(135deg, #F8D030, #FBE598);
+  --color-type-grass-gradient: linear-gradient(135deg, #78C850, #A8D788);
+  --color-type-ice-gradient: linear-gradient(135deg, #98D8D8, #C8E8E8);
+  --color-type-fighting-gradient: linear-gradient(135deg, #C03028, #E86860);
+  --color-type-poison-gradient: linear-gradient(135deg, #A040A0, #C878D0);
+  --color-type-ground-gradient: linear-gradient(135deg, #E0C068, #E8D8A0);
+  --color-type-flying-gradient: linear-gradient(135deg, #A890F0, #D0B8F8);
+  --color-type-psychic-gradient: linear-gradient(135deg, #F85888, #F8A8C8);
+  --color-type-bug-gradient: linear-gradient(135deg, #A8B820, #D0D858);
+  --color-type-rock-gradient: linear-gradient(135deg, #B8A038, #D8C878);
+  --color-type-ghost-gradient: linear-gradient(135deg, #705898, #A088C8);
+  --color-type-dragon-gradient: linear-gradient(135deg, #7038F8, #A878F8);
+  --color-type-dark-gradient: linear-gradient(135deg, #705848, #A88878);
+  --color-type-steel-gradient: linear-gradient(135deg, #B8B8D0, #D8D8E8);
+  --color-type-fairy-gradient: linear-gradient(135deg, #EE99AC, #F8C8D8);
+
+  /* ========================================================================
+     CORES DE ESTADO
+     ======================================================================== */
+  --color-error: #ef4444;
+  --color-error-light: #fecaca;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* ========================================================================
+     CORES DE COMPONENTES - LIGHT MODE
+     ======================================================================== */
+  --bg-container: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --bg-card: var(--color-white);
+  --bg-card-header: rgba(0, 0, 0, 0.05);
+  --bg-input: rgba(255, 255, 255, 0.95);
+  --bg-filter: rgba(255, 255, 255, 0.18);
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-light: var(--color-white);
+  --text-placeholder: var(--color-gray-400);
+
+  --border-color: rgba(0, 0, 0, 0.05);
+  --border-color-light: rgba(255, 255, 255, 0.3);
+
+  /* ========================================================================
+     ESPAÇAMENTO (Escala 4px)
+     ======================================================================== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 30px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 50px;
+
+  /* ========================================================================
+     BORDER RADIUS
+     ======================================================================== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* ========================================================================
+     TAMANHOS DE FONTE
+     ======================================================================== */
+  --font-size-xs: 10px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 72px;
+
+  /* ========================================================================
+     FONT WEIGHTS
+     ======================================================================== */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ========================================================================
+     SOMBRAS
+     ======================================================================== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+
+  /* ========================================================================
+     DURAÇÃO DE ANIMAÇÕES
+     ======================================================================== */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.8s;
+  --duration-slowest: 1.5s;
+
+  /* ========================================================================
+     EASING FUNCTIONS
+     ======================================================================== */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* ========================================================================
+     BREAKPOINTS
+     ======================================================================== */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1200px;
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Cores de componentes - Dark Mode */
+    --bg-container: linear-gradient(135deg, #0f0f1e 0%, #1a0a2e 50%, #2d0a4a 100%);
+    --bg-card: #1a1a2e;
+    --bg-card-header: rgba(255, 255, 255, 0.05);
+    --bg-input: rgba(30, 30, 46, 0.95);
+    --bg-filter: rgba(255, 255, 255, 0.1);
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-light: #1a1a2e;
+    --text-placeholder: #707080;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-light: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* ============================================================================
+   UTILITIES
+   ============================================================================ */
+
+/* Glassmorphism */
+.glass {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(30, 30, 46, 0.95);
+  }
+}
+
+/* Smooth transitions */
+.smooth {
+  transition: all var(--duration-normal) var(--ease-in-out);
+}
+
+/* Focus ring para acessibilidade */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary-1);
+  outline-offset: 2px;
+}
