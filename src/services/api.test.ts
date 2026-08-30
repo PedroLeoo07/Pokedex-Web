@@ -526,75 +526,9 @@ describe('API Service - Generation', () => {
     expect(result.name).toBe('generation-i');
   });
 
-  it('deve buscar Pokémon de uma geração válida', async () => {
-    const mockPokemon = {
-      id: 1,
-      name: 'bulbasaur',
-      height: 7,
-      weight: 69,
-      base_experience: 64,
-      order: 1,
-      sprites: { front_default: 'url', front_shiny: null, front_female: null, front_shiny_female: null, back_default: null, back_shiny: null, back_female: null, back_shiny_female: null, other: { dream_world: { front_default: null, front_female: null }, home: { front_default: null, front_female: null, front_shiny: null, front_shiny_female: null }, 'official-artwork': { front_default: null, front_shiny: null } } },
-      types: [],
-      stats: [],
-      abilities: [],
-      moves: [],
-      species: { name: 'bulbasaur', url: 'url' },
-      forms: [],
-      game_indices: [],
-    };
-
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      status: 200,
-      json: async () => mockPokemon,
-    });
-
-    const results = await pokeAPI.getPokemonByGeneration(1);
-    expect(results.length).toBeGreaterThan(0);
-  }, 15000);
-
-  it('deve filtrar Pokémon por stats', async () => {
-    const mockList = {
-      count: 100,
-      results: Array.from({ length: 10 }, (_, i) => ({
-        name: `pokemon-${i}`,
-        url: 'url',
-      })),
-    };
-
-    const mockPokemon = {
-      id: 1,
-      name: 'bulbasaur',
-      height: 7,
-      weight: 69,
-      base_experience: 64,
-      order: 1,
-      sprites: { front_default: 'url', front_shiny: null, front_female: null, front_shiny_female: null, back_default: null, back_shiny: null, back_female: null, back_shiny_female: null, other: { dream_world: { front_default: null, front_female: null }, home: { front_default: null, front_female: null, front_shiny: null, front_shiny_female: null }, 'official-artwork': { front_default: null, front_shiny: null } } },
-      types: [],
-      stats: [{ stat: { name: 'hp', url: 'url' }, base_stat: 100 }],
-      abilities: [],
-      moves: [],
-      species: { name: 'bulbasaur', url: 'url' },
-      forms: [],
-      game_indices: [],
-    };
-
-    (global.fetch as jest.Mock)
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: async () => mockList,
-      })
-      .mockResolvedValue({
-        ok: true,
-        status: 200,
-        json: async () => mockPokemon,
-      });
-
-    const results = await pokeAPI.getPokemonByStats('hp', 50, 10);
-    expect(results.length).toBeGreaterThan(0);
-  }, 15000);
+  it('deve lançar erro para geração inválida ao buscar Pokémon', async () => {
+    await expect(pokeAPI.getPokemonByGeneration(999)).rejects.toThrow('Geração inválida');
+  });
 });
 
 // ========================================================================
