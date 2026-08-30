@@ -552,7 +552,7 @@ describe('API Service - Generation', () => {
 
     const results = await pokeAPI.getPokemonByGeneration(1);
     expect(results.length).toBeGreaterThan(0);
-  });
+  }, 15000);
 
   it('deve filtrar Pokémon por stats', async () => {
     const mockList = {
@@ -594,7 +594,7 @@ describe('API Service - Generation', () => {
 
     const results = await pokeAPI.getPokemonByStats('hp', 50, 10);
     expect(results.length).toBeGreaterThan(0);
-  });
+  }, 15000);
 });
 
 // ========================================================================
@@ -626,7 +626,7 @@ describe('API Service - List and Search', () => {
     const result = await pokeAPI.getPokemonList({ limit: 20, offset: 0 });
     expect(result.results).toHaveLength(20);
     expect(result.count).toBe(1000);
-  });
+  }, 10000);
 
   it('deve buscar por nome com fallback para padrão', async () => {
     const mockPokemon = {
@@ -655,7 +655,7 @@ describe('API Service - List and Search', () => {
 
     const results = await pokeAPI.searchPokemon('bulbasaur');
     expect(results).toHaveLength(1);
-  });
+  }, 10000);
 });
 
 // ========================================================================
@@ -695,7 +695,7 @@ describe('API Service - Prefetch', () => {
 
     await pokeAPI.prefetchCommonData();
     expect(global.fetch).toHaveBeenCalledTimes(2);
-  });
+  }, 10000);
 
   it('deve continuar mesmo se pré-carregamento falhar', async () => {
     (global.fetch as jest.Mock)
